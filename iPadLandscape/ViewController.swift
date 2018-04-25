@@ -12,6 +12,11 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("console message test...")
+        
+        if UIDevice.current.userInterfaceIdiom == .phone { print("iPhone is running") }
+        
+        if UIDevice.current.userInterfaceIdiom == .pad { print("Now iPad is RUNNING...") }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -20,11 +25,9 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-        print(UIDevice.current.orientation.isLandscape)
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            print("iPad running")
-        }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        print("Landscape Transition?... " + "\(UIDevice.current.orientation.isLandscape)")
     }
 }
 
