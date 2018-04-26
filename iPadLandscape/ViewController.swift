@@ -11,10 +11,21 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet weak var bgImage: UIImageView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var btnPlay: UIButton!
+    @IBOutlet weak var btnReset: UIButton!
+    @IBOutlet weak var btnPause: UIButton!
+    var timer = Timer()
+    var counter = 0.0
+    var isRunning = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("console message test...")
+        lblTitle.text = "\(counter)"
+        btnPlay.isEnabled = true
+        btnPause.isEnabled = false
+        
         
         if UIDevice.current.userInterfaceIdiom == .phone { print("iPhone is running") }
         if UIDevice.current.userInterfaceIdiom == .pad {
@@ -39,18 +50,33 @@ class ViewController: UIViewController {
         if UIDevice.current.userInterfaceIdiom == .pad && UIDevice.current.orientation.isPortrait {
             //print("iPad and Landscape...")
             bgImage.backgroundColor = UIColor(patternImage: UIImage(named: "iPadPortrait01")!)
-            
         }
-        
     }
     
-    /*override public var traitCollection: UITraitCollection {
-        if UIDevice.current.userInterfaceIdiom == .pad && UIDevice.current.orientation.isPortrait {
-            let collections = [UITraitCollection(horizontalSizeClass: .compact), UITraitCollection(verticalSizeClass: .regular)]
-            
-            return UITraitCollection(traitsFrom: collections)
-        }
-        return super.traitCollection
-    }*/
+    @IBAction func actionPlay(_ sender: UIButton) {
+        timer = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
+        btnPlay.isEnabled = false
+        btnPause.isEnabled = true
+        isRunning = true
+    }
+    
+    @objc func UpdateTimer() {
+        counter += 0.1
+        lblTitle.text = String(format: "%.1f", counter)
+    }
+    @IBAction func actionReset(_ sender: UIButton) {
+        timer.invalidate()
+        counter = 0
+        lblTitle.text = "\(counter)"
+        btnPlay.isEnabled = true
+        btnPause.isEnabled = false
+        isRunning = false
+    }
+    @IBAction func actionPause(_ sender: UIButton) {
+        timer.invalidate()
+        btnPlay.isEnabled = true
+        btnPause.isEnabled = false
+    }
+    
 }
 

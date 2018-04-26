@@ -21,6 +21,40 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WY2-Bj-Sju">
                                 <rect key="frame" x="0.0" y="10" width="768" height="1024"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yDX-cL-xcP">
+                                <rect key="frame" x="64" y="237" width="640" height="278"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="211"/>
+                                <color key="textColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h2N-mq-BxZ">
+                                <rect key="frame" x="38" y="898" width="157" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <state key="normal" title="Play"/>
+                                <connections>
+                                    <action selector="actionPlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZiR-CS-AaQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cx4-no-urf">
+                                <rect key="frame" x="548" y="898" width="116" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <state key="normal" title="Pause"/>
+                                <connections>
+                                    <action selector="actionPause:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l36-y2-AXr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwT-h3-Gcg">
+                                <rect key="frame" x="284" y="898" width="176" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="41"/>
+                                <state key="normal" title="Reset"/>
+                                <connections>
+                                    <action selector="actionReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bhY-Fo-YcW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -33,11 +67,15 @@
                     </view>
                     <connections>
                         <outlet property="bgImage" destination="WY2-Bj-Sju" id="hlf-Ah-ebu"/>
+                        <outlet property="btnPause" destination="Cx4-no-urf" id="ubi-yf-GKy"/>
+                        <outlet property="btnPlay" destination="h2N-mq-BxZ" id="1PM-Xd-nfW"/>
+                        <outlet property="btnReset" destination="IwT-h3-Gcg" id="Cfn-SQ-Pxi"/>
+                        <outlet property="lblTitle" destination="yDX-cL-xcP" id="W4t-co-jHv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="31.884057971014496" y="71.739130434782609"/>
+            <point key="canvasLocation" x="31.25" y="71.484375"/>
         </scene>
     </scenes>
 </document>
