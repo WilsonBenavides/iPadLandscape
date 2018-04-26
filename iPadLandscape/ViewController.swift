@@ -9,7 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var bgImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("console message test...")
@@ -17,7 +19,7 @@ class ViewController: UIViewController {
         if UIDevice.current.userInterfaceIdiom == .phone { print("iPhone is running") }
         if UIDevice.current.userInterfaceIdiom == .pad {
             print("Now iPad is RUNNING...")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bgPortraitiPad01")!)
+            bgImage.backgroundColor = UIColor(patternImage: UIImage(named: "iPadPortrait01")!)
         }
     }
 
@@ -30,11 +32,14 @@ class ViewController: UIViewController {
         print("Landscape Transition?... " + "\(UIDevice.current.orientation.isLandscape)")
         if UIDevice.current.userInterfaceIdiom == .pad && UIDevice.current.orientation.isLandscape {
             //print("iPad and Landscape...")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bgLandscapeiPad01")!)
+      
+            bgImage.backgroundColor = UIColor(patternImage: UIImage(named: "iPadLandscape02")!)
+            print("height: " + "\(UIScreen.main.bounds.height)" + ", width: " + "\(UIScreen.main.bounds.width)")
         }
         if UIDevice.current.userInterfaceIdiom == .pad && UIDevice.current.orientation.isPortrait {
             //print("iPad and Landscape...")
-            self.view.backgroundColor = UIColor(patternImage: UIImage(named: "bgPortraitiPad02")!)
+            bgImage.backgroundColor = UIColor(patternImage: UIImage(named: "iPadPortrait01")!)
+            
         }
         
     }

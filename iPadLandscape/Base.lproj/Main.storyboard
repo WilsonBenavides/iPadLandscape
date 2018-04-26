@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,14 +15,29 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="iPadLandscape" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WY2-Bj-Sju">
+                                <rect key="frame" x="0.0" y="10" width="768" height="1024"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WY2-Bj-Sju" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="GNX-ig-w9y"/>
+                            <constraint firstItem="WY2-Bj-Sju" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="SkO-T3-Stv"/>
+                            <constraint firstItem="WY2-Bj-Sju" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="vKh-GN-s9U"/>
+                            <constraint firstItem="WY2-Bj-Sju" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="yyD-4J-88h"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="bgImage" destination="WY2-Bj-Sju" id="hlf-Ah-ebu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="31.884057971014496" y="71.739130434782609"/>
         </scene>
     </scenes>
 </document>
