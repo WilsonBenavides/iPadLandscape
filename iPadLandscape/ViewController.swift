@@ -5,6 +5,7 @@ class ViewController: UIViewController {
     let jokerImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "joker"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -28,6 +29,12 @@ class ViewController: UIViewController {
     }
     
     private func setupLayout() {
+        let topImageContainerView = UIView()
+        topImageContainerView.backgroundColor = .blue
+        view.addSubview(topImageContainerView)
+        topImageContainerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        
+        
         jokerImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         jokerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
         jokerImageView.widthAnchor.constraint(equalToConstant: 159).isActive = true
