@@ -32,8 +32,12 @@ class ViewController: UIViewController {
         let topImageContainerView = UIView()
         topImageContainerView.backgroundColor = .blue
         view.addSubview(topImageContainerView)
-        topImageContainerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
-        
+        //topImageContainerView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        topImageContainerView.translatesAutoresizingMaskIntoConstraints = false
+        topImageContainerView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        topImageContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        topImageContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
         
         jokerImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         jokerImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100).isActive = true
