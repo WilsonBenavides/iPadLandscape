@@ -10,14 +10,29 @@ import UIKit
 
 class PageCell: UICollectionViewCell {
     
-    let jokerImageView: UIImageView = {
+    var page: Page? {
+        didSet {
+            //print(page?.imageName)
+            guard let unwrappedPage = page else { return }
+            jokerImageView.image = UIImage(named: unwrappedPage.imageName)
+            
+            let attributedText = NSMutableAttributedString(string: unwrappedPage.headerText, attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
+            
+            attributedText.append(NSAttributedString(string: "\n\n\n\(unwrappedPage.bodyText)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.gray]))
+            
+            descriptionTextView.attributedText = attributedText
+            descriptionTextView.textAlignment = .center
+        }
+    }
+    
+    private let jokerImageView: UIImageView = {
         let imageView = UIImageView(image: #imageLiteral(resourceName: "joker"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    let descriptionTextView: UITextView = {
+    private let descriptionTextView: UITextView = {
         let textView = UITextView()
         
         var prop = (UIScreen.main.bounds.height / 200.0) + 1
@@ -25,7 +40,7 @@ class PageCell: UICollectionViewCell {
         
         let attributedText = NSMutableAttributedString(string: "Join us today in our fun and games!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 18)])
         
-        //attributedText.append(NSAttributedString(string: "\n\n\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.gray]))
+        attributedText.append(NSAttributedString(string: "\n\n\nAre you ready for loads and loads of fun? Don't wait any longer! We hope to see you in our stores soon.", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 18), NSAttributedStringKey.foregroundColor: UIColor.gray]))
         
         textView.attributedText = attributedText
         

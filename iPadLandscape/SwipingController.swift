@@ -8,18 +8,14 @@
 
 import UIKit
 
-struct Page {
-    
-    let imageName: String
-    let headerText: String
-}
+
 
 class SwipingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let pages = [
-        Page(imageName: "joker", headerText: "Join use today in out fun and games!"),
-        Page(imageName: "batgirl", headerText: "ubscribe and get coupons o nour daily events"),
-        Page(imageName: "catgirl", headerText: "VIP members special services")
+        Page(imageName: "joker", headerText: "Join use today in out fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longet! We hopw to see you in our stores soon."),
+        Page(imageName: "batgirl", headerText: "Subscribe and get coupons o nour daily events", bodyText: "Get notified of the savings inmmediately when we announce them on our website. Make sure to also give us any feedback you have."),
+        Page(imageName: "catgirl", headerText: "VIP members special services", bodyText: "text...")
     ]
     
     //let imageNames = ["joker", "batgirl", "catgirl"]
@@ -45,8 +41,9 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! PageCell
         
         let page = pages[indexPath.item]
-        cell.jokerImageView.image = UIImage(named: page.imageName)
-        cell.descriptionTextView.text = page.headerText
+        cell.page = page
+        //cell.jokerImageView.image = UIImage(named: page.imageName)
+        //cell.descriptionTextView.text = page.headerText
         //let imageName = pages[indexPath.item]
         //cell.jokerImageView.image = UIImage(named: imageName)
         //cell.descriptionTextView.text = headerStrings[indexPath.item]
