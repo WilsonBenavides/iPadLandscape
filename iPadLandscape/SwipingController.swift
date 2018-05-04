@@ -15,6 +15,9 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
     let pages = [
         Page(imageName: "joker", headerText: "Join use today in out fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longet! We hopw to see you in our stores soon."),
         Page(imageName: "batgirl", headerText: "Subscribe and get coupons o nour daily events", bodyText: "Get notified of the savings inmmediately when we announce them on our website. Make sure to also give us any feedback you have."),
+        Page(imageName: "catgirl", headerText: "VIP members special services", bodyText: "text..."),
+        Page(imageName: "joker", headerText: "Join use today in out fun and games!", bodyText: "Are you ready for loads and loads of fun? Don't wait any longet! We hopw to see you in our stores soon."),
+        Page(imageName: "batgirl", headerText: "Subscribe and get coupons o nour daily events", bodyText: "Get notified of the savings inmmediately when we announce them on our website. Make sure to also give us any feedback you have."),
         Page(imageName: "catgirl", headerText: "VIP members special services", bodyText: "text...")
     ]
     
@@ -23,6 +26,8 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         button.setTitle("PREV", for: .normal)
         button.setTitleColor(.gray, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.addTarget(self, action: #selector(handlePrev), for: .touchUpInside)
         return button
     }()
     
@@ -37,19 +42,24 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
         return button
     }()
     
+    @objc private func handlePrev() {
+        let nextIndex = max(pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: nextIndex, section: 0)
+        pageControl.currentPage = nextIndex
+        collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
     @objc private func handleNext() {
-        print("Trying to advance to next")
-        
         let nextIndex = min(pageControl.currentPage + 1, pages.count - 1)
         let indexPath = IndexPath(item: nextIndex, section: 0)
         pageControl.currentPage = nextIndex
         collectionView?.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
     
-    private let pageControl: UIPageControl = {
+    private lazy var pageControl: UIPageControl = {
         let pc = UIPageControl()
         pc.currentPage = 0
-        pc.numberOfPages = 4
+        pc.numberOfPages = pages.count
         pc.currentPageIndicatorTintColor = .mainPink
         pc.pageIndicatorTintColor = UIColor(red: 249/255, green: 207/255, blue: 224/255, alpha: 1)
         return pc
@@ -78,6 +88,15 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
                 bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
                 ])
         }
+    }
+    
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        
+        let x = targetContentOffset.pointee.x
+        
+        pageControl.currentPage = Int(x / view.frame.width)
+        
+        //print(x, view.frame.width, x / view.frame.width)
     }
     
     override func viewDidLoad() {
