@@ -74,18 +74,6 @@ class ViewController: UIViewController {
     }
     
     fileprivate func setupBottomControls() {
-        //view.addSubview(previousButton)
-        //previousButton.backgroundColor = .red
-        //previousButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
-        
-        //let yellowView = UIView()
-        //yellowView.backgroundColor = .yellow
-        
-        //let greenView = UIView()
-        //greenView.backgroundColor = .green
-        
-        //let blueView = UIView()
-        //blueView.backgroundColor = .blue
         
         let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -123,8 +111,6 @@ class ViewController: UIViewController {
         jokerImageView.centerYAnchor.constraint(equalTo: topImageContainerView.centerYAnchor).isActive = true
         jokerImageView.heightAnchor.constraint(equalTo: topImageContainerView.heightAnchor, multiplier: 0.7).isActive = true
         
-        //topImageContainerView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        //topImageContainerView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         topImageContainerView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.5).isActive = true
         
         descriptionTextView.topAnchor.constraint(equalTo: topImageContainerView.bottomAnchor).isActive = true
