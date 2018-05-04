@@ -19,9 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.makeKeyAndVisible()
         
-        let randomViewController = UIViewController()
-        randomViewController.view.backgroundColor = .purple
-        window?.rootViewController = randomViewController
+        //let randomViewController = UIViewController()
+        //randomViewController.view.backgroundColor = .purple
+        let layout = UICollectionViewFlowLayout()
+        let swipingController = SwipingController(collectionViewLayout: layout)
+        window?.rootViewController = swipingController
         
         return true
     }
