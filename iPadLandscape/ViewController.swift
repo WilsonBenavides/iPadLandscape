@@ -1,5 +1,9 @@
 import UIKit
 
+extension UIColor {
+    static var mainPink = UIColor(red: 232/255, green: 68/255, blue: 133/255, alpha: 1)
+}
+
 class ViewController: UIViewController {
     
     let jokerImageView: UIImageView = {
@@ -12,7 +16,7 @@ class ViewController: UIViewController {
     let descriptionTextView: UITextView = {
         let textView = UITextView()
         
-        var prop = UIScreen.main.bounds.height / 100.0
+        var prop = (UIScreen.main.bounds.height / 200.0) + 1
         print("height: " + "\(UIScreen.main.bounds.height)" + ", width: " + "\(UIScreen.main.bounds.width)" + " , related font to 18 and 13: " + "\(prop * 4)" + ", \(prop * 3)")
         
         let attributedText = NSMutableAttributedString(string: "Join us today in our fun and games!", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: prop * 4)])
@@ -32,17 +36,28 @@ class ViewController: UIViewController {
     
     private let previousButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("PREV", for: .normal)
+        button.setTitle("NEXT", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
         return button
     }()
     
     let nextButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("NEXT", for: .normal)
+        button.setTitle("PREV", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.mainPink, for: .normal)
         return button
+    }()
+    
+    private let pageControl: UIPageControl = {
+        let pc = UIPageControl()
+        pc.currentPage = 0
+        pc.numberOfPages = 4
+        pc.currentPageIndicatorTintColor = .mainPink
+        pc.pageIndicatorTintColor = UIColor(red: 249/255, green: 207/255, blue: 224/255, alpha: 1)
+        return pc
     }()
     
     override func viewDidLoad() {
@@ -60,19 +75,19 @@ class ViewController: UIViewController {
     
     fileprivate func setupBottomControls() {
         //view.addSubview(previousButton)
-        previousButton.backgroundColor = .red
+        //previousButton.backgroundColor = .red
         //previousButton.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         
         //let yellowView = UIView()
         //yellowView.backgroundColor = .yellow
         
-        let greenView = UIView()
-        greenView.backgroundColor = .green
+        //let greenView = UIView()
+        //greenView.backgroundColor = .green
         
         //let blueView = UIView()
         //blueView.backgroundColor = .blue
         
-        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, greenView, nextButton])
+        let bottomControlsStackView = UIStackView(arrangedSubviews: [previousButton, pageControl, nextButton])
         bottomControlsStackView.translatesAutoresizingMaskIntoConstraints = false
         bottomControlsStackView.distribution = .fillEqually
         //bottomControlsStackView.axis = .vertical
