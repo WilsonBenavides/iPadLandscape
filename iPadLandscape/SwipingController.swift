@@ -8,7 +8,22 @@
 
 import UIKit
 
+struct Page {
+    
+    let imageName: String
+    let headerText: String
+}
+
 class SwipingController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    let pages = [
+        Page(imageName: "joker", headerText: "Join use today in out fun and games!"),
+        Page(imageName: "batgirl", headerText: "ubscribe and get coupons o nour daily events"),
+        Page(imageName: "catgirl", headerText: "VIP members special services")
+    ]
+    
+    //let imageNames = ["joker", "batgirl", "catgirl"]
+    //let headerStrings = ["Join use today in out fun and games!", "Subscribe and get coupons o nour daily events", "VIP members special services"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +38,18 @@ class SwipingController: UICollectionViewController, UICollectionViewDelegateFlo
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return pages.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! PageCell
         
-        //cell.backgroundColor = indexPath.item % 2 == 0 ? .red : .green
+        let page = pages[indexPath.item]
+        cell.jokerImageView.image = UIImage(named: page.imageName)
+        cell.descriptionTextView.text = page.headerText
+        //let imageName = pages[indexPath.item]
+        //cell.jokerImageView.image = UIImage(named: imageName)
+        //cell.descriptionTextView.text = headerStrings[indexPath.item]
         return cell
     }
     
